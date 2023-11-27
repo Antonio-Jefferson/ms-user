@@ -1,9 +1,11 @@
 package com.ms.user.entities;
 
+import com.ms.user.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -13,6 +15,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -23,4 +26,10 @@ public class UserEntity implements Serializable {
     private String email;
     private String password;
 
+    public static UserEntity toEntity(UserDTO user){
+        return UserEntity.builder()
+                .name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword()).build();
+    }
 }

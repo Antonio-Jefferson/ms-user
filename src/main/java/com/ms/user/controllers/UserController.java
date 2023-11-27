@@ -21,8 +21,8 @@ public class UserController {
     private final UserService userService;
     @PostMapping
     public ResponseEntity<UserEntity> saveUser(@RequestBody @Valid UserDTO userDto){
-        UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(userDto, userEntity);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(userEntity));
+        var user = new UserEntity();
+        user = UserEntity.toEntity(userDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(user));
     }
 }

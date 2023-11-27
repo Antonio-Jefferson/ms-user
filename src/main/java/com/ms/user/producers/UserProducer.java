@@ -17,7 +17,8 @@ public class UserProducer {
     private String routingKey;
 
     public void publishMessageEmail(UserEntity userEntity){
-        var emailDTO = new EmailDTO();
+        EmailDTO emailDTO;
+        emailDTO = new EmailDTO();
         emailDTO.setUserId(userEntity.getUserId());
         emailDTO.setEmailTo(userEntity.getEmail());
         emailDTO.setSubject("Cadastro realizado com sucesso!");
