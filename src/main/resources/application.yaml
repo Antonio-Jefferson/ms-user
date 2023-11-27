@@ -9,3 +9,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  rabbitmq:
+    addresses: amqps://occvhbem:xmMmD9UJgrPJZ_av8kozrZAbaoiZ0RXB@woodpecker.rmq.cloudamqp.com/occvhbem
+
+broker:
+  queue:
+    email:
+      name: default.email
