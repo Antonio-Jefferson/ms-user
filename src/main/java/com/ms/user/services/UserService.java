@@ -1,6 +1,7 @@
 package com.ms.user.services;
 
 import com.ms.user.entities.UserEntity;
+import com.ms.user.exceptions.ConflictException;
 import com.ms.user.producers.UserProducer;
 import com.ms.user.repositories.UserRepository;
 import jakarta.transaction.Transactional;
@@ -23,7 +24,7 @@ public class UserService {
             userProducer.publishMessageEmail(userEntity);
             return userEntity;
         }else {
-            throw new Error("Usuário já existe");
+            throw new ConflictException("Already registered user");
         }
 
     }
