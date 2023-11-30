@@ -7,11 +7,13 @@ import lombok.Data;
 @Data
 public class UserDTO {
 
-    @NotBlank
+    @NotBlank(message = "Name cannot be empty")
     private String name;
-    @Email
-    private String email;
-    @NotBlank
-    private String password;
 
+    @NotBlank(message = "Email cannot be empty")
+    @Email(message = "Please provide a valid email address")
+    private String email;
+
+    @NotBlank(message = "Password cannot be null or empty")
+    private String password;
 }
